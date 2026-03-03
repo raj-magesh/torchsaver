@@ -1,0 +1,125 @@
+[build-system]
+requires = ["uv_build"]
+build-backend = "uv_build"
+
+[project]
+name = "torchsaver"
+description = "Extract intermediate features from PyTorch models and save them to disk as HDF5 files"
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
+authors = [
+    { name = "Raj Magesh Gauthaman", email = "torchsaver@raj-magesh.org" },
+]
+keywords = []
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+    "Natural Language :: English",
+    "Operating System :: POSIX :: Linux",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering",
+    "Typing :: Typed",
+]
+urls = { repository = "https://codeberg.org/raj-magesh/torchsaver" }
+dependencies = [
+    "xdg-base-dirs",
+    "numpy",
+    "tqdm",
+    "netCDF4",
+    "xarray",
+    "Pillow",
+    "polycache",
+    "torch",
+    "torchvision",
+]
+version = "0.1.0"
+
+[dependency-groups]
+dev = ["ruff", "pytest", "sphinx"]
+
+[project.optional-dependencies]
+cpu = ["torch", "torchvision"]
+cu126 = ["torch", "torchvision"]
+cu128 = ["torch", "torchvision"]
+cu129 = ["torch", "torchvision"]
+cu130 = ["torch", "torchvision"]
+rocm = ["torch", "torchvision", "pytorch-triton-rocm"]
+xpu = ["torch", "torchvision", "pytorch-triton-xpu"]
+
+[tool.uv]
+environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+
+conflicts = [
+    [
+        { extra = "cpu" },
+        { extra = "cu126" },
+        { extra = "cu128" },
+        { extra = "cu129" },
+        { extra = "cu130" },
+        { extra = "rocm" },
+        { extra = "xpu" },
+    ],
+]
+
+[tool.uv.sources]
+torch = [
+    { index = "pytorch-cpu", extra = "cpu", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-cu126", extra = "cu126", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-cu128", extra = "cu128", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-cu129", extra = "cu129", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-cu130", extra = "cu130", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-rocm", extra = "rocm", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-xpu", extra = "xpu", marker = "sys_platform == 'linux'" },
+]
+torchvision = [
+    { index = "pytorch-cpu", extra = "cpu", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-cu126", extra = "cu126", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-cu128", extra = "cu128", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-cu129", extra = "cu129", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-cu130", extra = "cu130", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-rocm", extra = "rocm", marker = "sys_platform == 'linux'" },
+    { index = "pytorch-xpu", extra = "xpu", marker = "sys_platform == 'linux'" },
+]
+pytorch-triton-rocm = [
+    { index = "pytorch-rocm", extra = "rocm", marker = "sys_platform == 'linux'" },
+]
+pytorch-triton-xpu = [
+    { index = "pytorch-xpu", extra = "xpu", marker = "sys_platform == 'linux'" },
+]
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu126"
+url = "https://download.pytorch.org/whl/cu126"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu129"
+url = "https://download.pytorch.org/whl/cu129"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-rocm"
+url = "https://download.pytorch.org/whl/rocm6.4"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-xpu"
+url = "https://download.pytorch.org/whl/xpu"
+explicit = true
