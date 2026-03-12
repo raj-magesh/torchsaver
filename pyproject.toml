@@ -4,18 +4,23 @@ build-backend = "uv_build"
 
 [project]
 name = "torchsaver"
-description = "Extract intermediate features from PyTorch models and save them to disk as HDF5 files"
+description = "Extract activations from PyTorch model layers and stream them to local HDF5 files"
 readme = "README.md"
-requires-python = ">=3.13"
-license = { file = "LICENSE" }
+requires-python = ">=3.14"
+license = "GPL-3.0-or-later"
+license-files = ["LICENSE"]
 authors = [
     { name = "Raj Magesh Gauthaman", email = "torchsaver@raj-magesh.org" },
 ]
-keywords = []
+keywords = [
+    "model activations",
+    "feature extraction",
+    "PyTorch",
+    "local HDF5 disk cache",
+]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Intended Audience :: Science/Research",
-    "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
     "Natural Language :: English",
     "Operating System :: POSIX :: Linux",
     "Programming Language :: Python :: 3",
@@ -49,7 +54,9 @@ rocm = ["torch", "torchvision", "pytorch-triton-rocm"]
 xpu = ["torch", "torchvision", "pytorch-triton-xpu"]
 
 [tool.uv]
-environments = ["sys_platform == 'linux' and platform_machine == 'x86_64'"]
+required-environments = [
+    "sys_platform == 'linux' and platform_machine == 'x86_64'",
+]
 
 conflicts = [
     [
