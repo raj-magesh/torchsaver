@@ -49,9 +49,9 @@ class RandomProjection(Hook):
         return features @ projection
 
     @cache(
-        path=TORCHSAVER_HOME,
+        root_dir=TORCHSAVER_HOME,
         identifier=("hooks/{identifier}/in_channels={in_channels}.npy"),
-        helper=lambda kwargs: {
+        remapper=lambda kwargs: {
             "identifier": kwargs["self"].identifier,
             "in_channels": kwargs["in_channels"],
         },
