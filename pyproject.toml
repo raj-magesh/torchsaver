@@ -1,12 +1,12 @@
 [build-system]
-requires = ["uv_build<0.12"]
+requires = ["uv_build<0.13"]
 build-backend = "uv_build"
 
 [project]
 name = "torchsaver"
 description = "Extract activations from PyTorch model layers and stream them to local HDF5 files"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.14.7"
 license = "GPL-3.0-or-later"
 license-files = ["LICENSE"]
 authors = [
@@ -29,13 +29,13 @@ classifiers = [
 ]
 urls = { repository = "https://codeberg.org/raj-magesh/torchsaver" }
 dependencies = [
-    "xdg-base-dirs",
+    "platformdirs",
     "numpy",
     "tqdm",
-    "netCDF4",
     "xarray",
+    "netCDF4",
     "Pillow",
-    "polycache",
+    "polycache @ git+https://codeberg.org/raj-magesh/polycache.git@main",
     "torch",
     "torchvision",
 ]
@@ -71,6 +71,7 @@ conflicts = [
 ]
 
 [tool.uv.sources]
+polycache = { path = "../polycache", editable = true }
 torch = [
     { index = "pytorch-cpu", extra = "cpu", marker = "sys_platform == 'linux'" },
     { index = "pytorch-cu126", extra = "cu126", marker = "sys_platform == 'linux'" },
