@@ -4,9 +4,8 @@ import numpy as np
 import torch
 from polycache import cache
 
+from torchsaver.hooks._definition import Hook
 from torchsaver.utilities import TORCHSAVER_HOME, try_devices
-
-from ._definition import Hook
 
 
 class RandomProjection(Hook):

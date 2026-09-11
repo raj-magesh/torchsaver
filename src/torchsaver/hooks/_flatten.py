@@ -2,7 +2,7 @@ from typing import Self
 
 import torch
 
-from ._definition import Hook
+from torchsaver.hooks._definition import Hook
 
 
 class Flatten(Hook):

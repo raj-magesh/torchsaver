@@ -3,9 +3,8 @@ from typing import Self
 import numpy as np
 import torch
 
+from torchsaver.hooks._definition import Hook
 from torchsaver.utilities import try_devices
-
-from ._definition import Hook
 
 
 def compute_johnson_lindenstrauss_limit(*, n_samples: int, epsilon: float) -> int:

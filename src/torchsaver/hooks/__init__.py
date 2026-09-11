@@ -8,12 +8,12 @@ __all__ = (
     "compute_johnson_lindenstrauss_limit",
 )
 
-from ._definition import Hook
-from ._flatten import Flatten
-from ._global_average_pool import GlobalAveragePool
-from ._global_maxpool import GlobalMaxpool
-from ._random_projection import RandomProjection
-from ._sparse_random_projection import (
+from torchsaver.hooks._definition import Hook
+from torchsaver.hooks._flatten import Flatten
+from torchsaver.hooks._global_average_pool import GlobalAveragePool
+from torchsaver.hooks._global_maxpool import GlobalMaxpool
+from torchsaver.hooks._random_projection import RandomProjection
+from torchsaver.hooks._sparse_random_projection import (
     SparseRandomProjection,
     compute_johnson_lindenstrauss_limit,
 )

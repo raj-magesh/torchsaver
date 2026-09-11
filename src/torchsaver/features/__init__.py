@@ -4,5 +4,5 @@ __all__ = (
     "flatten_features",
 )
 
-from ._extract import extract_features
-from ._postprocess import concatenate_features, flatten_features
+from torchsaver.features._extract import extract_features
+from torchsaver.features._postprocess import concatenate_features, flatten_features
