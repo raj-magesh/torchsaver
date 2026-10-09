@@ -30,6 +30,7 @@ classifiers = [
 urls = { repository = "https://codeberg.org/raj-magesh/torchsaver" }
 dependencies = [
     "platformdirs",
+    "loguru",
     "numpy",
     "tqdm",
     "xarray",
@@ -51,3 +52,21 @@ required-environments = [
 
 [tool.uv.sources]
 polycache = { path = "../polycache", editable = true }
+
+[tool.ruff]
+preview = true
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+    "missing-copyright-notice",
+    "line-too-long",
+    "missing-todo-link",
+    "missing-todo-author",
+]
+pydocstyle.convention = "numpy"
+logger-objects = ["loguru.logger"]
+typing-modules = ["numpy.typing"]
+
+[tool.deptry]
+known_first_party = ["torchsaver"]
